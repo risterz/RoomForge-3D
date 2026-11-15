@@ -21,7 +21,7 @@ RoomForge is a client-side React application. It requires no account, backend, o
 ```sh
 git clone https://github.com/risterz/RoomForge-3D.git
 cd RoomForge-3D
-npm ci
+npm install
 npm run dev
 ```
 

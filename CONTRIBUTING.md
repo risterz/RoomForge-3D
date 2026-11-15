@@ -7,7 +7,7 @@ Thank you for helping make RoomForge better.
 Use Node.js 22 or later and npm.
 
 ```sh
-npm ci
+npm install
 npm run dev
 ```
 
