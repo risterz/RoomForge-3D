@@ -4,8 +4,6 @@ node_modules/
 # Production output
 dist/
 
-# Local screenshots
-screenshot.png
 
 # Browser test output
 artifacts/

@@ -1,140 +1,158 @@
-# RoomForge
+# 🛋️ RoomForge 3D
 
-**Your space, reimagined.** Design a room in your browser with an interactive 3D workspace, editable furniture, and flexible finishes.
+<p align="center">
+  <img src="screenshot.png" alt="RoomForge 3D Workspace Preview" width="100%" style="border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.12);" />
+</p>
 
-RoomForge is a client-side React application. It requires no account, backend, or API key, and saves designs in your browser.
+<p align="center">
+  <strong>Your space, reimagined. Fast, interactive 3D interior design in the browser.</strong><br>
+  Zero accounts. Zero backends. 100% private and client-side.
+</p>
 
-## Features
+<p align="center">
+  <img src="https://img.shields.io/badge/React-19.2-61DAFB?logo=react&logoColor=black&style=flat-square" alt="React 19" />
+  <img src="https://img.shields.io/badge/Three.js-r180-black?logo=three.js&logoColor=white&style=flat-square" alt="Three.js" />
+  <img src="https://img.shields.io/badge/R3F-v9-black?logo=three.js&logoColor=white&style=flat-square" alt="React Three Fiber" />
+  <img src="https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white&style=flat-square" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Vite-7.2-646CFF?logo=vite&logoColor=white&style=flat-square" alt="Vite" />
+  <img src="https://img.shields.io/badge/License-MIT-green.svg?style=flat-square" alt="License MIT" />
+</p>
 
-- **3D workspace:** orbit, zoom, switch to a top view, and display room dimensions and a floor grid.
-- **15-piece catalog:** seating, tables, lighting, decor, doors, windows, and appliances.
-- **Direct editing:** add pieces by clicking or dragging from the catalog, then move, rotate, resize, recolor, duplicate, or remove them.
-- **Wall-aware placement:** doors and windows create wall openings; wall-mounted pieces stay aligned when moved or resized.
-- **Room customization:** change room dimensions, wall and floor colors, and lighting.
-- **Local design library:** automatically retain the current room and save up to 20 named designs.
-- **History and responsive controls:** undo and redo edits, including clearing the room, on desktop and mobile layouts.
+---
 
-## Quick start
+## 🌟 Highlights
 
-**Requirements:** Node.js 22 or later, npm, and a WebGL 2-capable browser with hardware acceleration enabled.
+- **Interactive 3D Viewport:** Free orbit, smooth zoom, instant top-down 2D orthographic plan, dynamic floor grid, and live room dimension callouts.
+- **15-Piece Procedural Catalog:** Seating, desks, dining tables, shelving, ceiling/floor lighting, plants, electronics, appliances, doors, and windows.
+- **Smart Wall Snapping:** Doors and windows dynamically puncture custom openings in room walls. Wall-mounted furniture locks to boundaries automatically.
+- **Precision Customization:** Resize room width & depth (3–12m), tweak wall & floor finishes, adjust ambient & directional lighting, and scale furniture (60%–140%).
+- **Non-Destructive Editing:** Full undo/redo history (`Ctrl+Z` / `Ctrl+Shift+Z`), quick duplicate, color palette picker, and one-click room clearing.
+- **Privacy First & Local Storage:** No server sync required. All rooms save directly to browser `localStorage` (supports up to 20 named projects).
 
-```sh
+---
+
+## 🎮 Interactive Controls
+
+| Action | Mouse / Touch | Keyboard |
+| :--- | :--- | :--- |
+| **Orbit Camera** | Click & drag on empty canvas | — |
+| **Zoom In / Out** | Mouse scroll wheel or pinch | — |
+| **Move Furniture** | Click & drag furniture piece | — |
+| **Rotate Selected** | Click rotate buttons in floating HUD | <kbd>R</kbd> |
+| **Remove Selected** | Click trash button | <kbd>Delete</kbd> or <kbd>Backspace</kbd> |
+| **Undo Edits** | Click Undo icon | <kbd>Ctrl</kbd> + <kbd>Z</kbd> / <kbd>Cmd</kbd> + <kbd>Z</kbd> |
+| **Redo Edits** | Click Redo icon | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Z</kbd> |
+| **Deselect Item** | Click empty canvas | <kbd>Escape</kbd> |
+
+---
+
+## ⚡ Quick Start
+
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v22.0.0 or later recommended)
+- `npm` (v10+ or package manager of choice)
+- Modern browser with WebGL 2 enabled
+
+### Installation
+
+```bash
+# 1. Clone repository
 git clone https://github.com/risterz/RoomForge-3D.git
 cd RoomForge-3D
+
+# 2. Install dependencies
 npm install
+
+# 3. Start local development server
 npm run dev
 ```
 
-Open **http://localhost:5173**.
+Open **`http://localhost:5173`** in your browser.
 
-To create and preview a production build:
+### Production Build
 
-```sh
+```bash
 npm run build
 npm run preview
 ```
 
-The build is written to `dist/`. No runtime environment variables are required.
+Static production assets compile directly into the `dist/` directory, ready to deploy to Cloudflare Pages, Vercel, Netlify, or GitHub Pages.
 
-## Using the editor
+---
 
-1. Choose a furniture category or search the catalog.
-2. Click a piece to add it, or drag it onto the canvas.
-3. Select and drag furniture to arrange the room.
-4. Use the selection controls to rotate, resize, recolor, duplicate, or remove a piece.
-5. Open **Room** to adjust dimensions, finishes, and lighting.
-6. Select **Save design** to name the room and add it to **My designs**.
+## 🏗️ Architecture & Mechanics
 
-Rooms can be 3–12 meters wide and deep. Furniture can be resized from 60% to 140% of its catalog size. Saving a design with an existing name replaces that saved version; the library retains up to 20 designs.
-
-### Controls
-
-| Action | Control |
-| --- | --- |
-| Orbit the camera | Drag empty canvas space |
-| Zoom | Scroll or use browser touch gestures |
-| Move an item | Drag the item |
-| Rotate selected item | `R` or the rotation buttons |
-| Remove selected item | `Delete`, `Backspace`, or **Remove** |
-| Undo | `Ctrl+Z` / `Cmd+Z` |
-| Redo | `Ctrl+Shift+Z` / `Cmd+Shift+Z` |
-| Deselect or close a dialog | `Escape` |
-
-## Project structure
-
-```text
+```
 RoomForge/
-├── public/                  # Favicon
+├── public/                  # Static assets & favicon
 ├── src/
-│   ├── App.tsx              # Editor state, history, and local persistence
-│   ├── Scene.tsx            # Canvas, room geometry, lighting, and camera
-│   ├── Furniture.tsx        # Procedural models and pointer interactions
-│   ├── FurniturePreview.tsx # Catalog and selection icons
-│   ├── wallPlacement.ts     # Shared wall snapping and clamping
-│   ├── data.ts              # Catalog, starter room, and design validation
-│   ├── types.ts             # Design and furniture model
-│   ├── styles.css           # Responsive interface styles
-│   └── main.tsx             # Application entry point
-├── tests/                   # Playwright browser regression tests
-├── index.html
+│   ├── App.tsx              # Root state machine, undo/redo stack & persistence
+│   ├── Scene.tsx            # Three.js canvas, lighting, camera controls & room bounds
+│   ├── Furniture.tsx        # Procedural 3D mesh definitions & raycast drag handlers
+│   ├── FurniturePreview.tsx # 2D/3D catalog visual representations
+│   ├── wallPlacement.ts     # Boundary clamping, wall snapping & orientation math
+│   ├── data.ts              # Catalog presets, starter room schema & validators
+│   ├── types.ts             # Strict TypeScript domain models
+│   ├── styles.css           # Glassmorphism UI & responsive design
+│   └── main.tsx             # Application bootstrap
+├── tests/                   # Automated Playwright test suite
 ├── package.json
-├── playwright.config.ts
 └── vite.config.ts
 ```
 
-`App` owns the design model and editing history. `Scene` renders the model with React Three Fiber, while `Furniture` supplies procedural geometry and pointer interactions.
+### Technical Design Principles
+1. **Procedural Geometry:** No heavy GLTF/OBJ downloads. Meshes are constructed programmatically with Three.js primitives for instant load times and lightweight network footprint.
+2. **Metric Coordinate System:** All positional and geometric properties utilize real-world meters `[x, y, z]`.
+3. **Wall Opening Solver:** Doors and windows calculate exact wall bounding boxes to visually section wall planes in real-time.
+4. **State Isolation:** Transform scaling is applied at root parent objects, keeping underlying procedural models clean and reusable.
 
-Item dimensions use meters, and positions are world-coordinate `[x, y, z]` tuples. The selected item's parent transform applies its scale once; models use unscaled base dimensions. `wallPlacement.ts` centralizes wall coordinates for placement, dragging, duplication, rotation, and room resizing.
+---
 
-## Privacy and local storage
+## 🧪 Testing
 
-Room designs are stored only in the browser's `localStorage`; RoomForge does not send them to an application server.
+RoomForge is backed by end-to-end browser regression tests using **Playwright**:
 
-| Key | Contents |
-| --- | --- |
-| `roomforge-current-design` | The current room, automatically saved after edits |
-| `roomforge-saved-designs` | Up to 20 named design snapshots |
-| `roomforge-drag-kind` | The furniture kind during a catalog drag operation |
-
-Saved data is specific to the browser and site origin. Clearing site data or changing the host or port can make designs unavailable. Designs cannot currently be exported, imported, shared between devices, or synchronized to an account.
-
-The interface requests Manrope and DM Sans from Google Fonts. All furniture, materials, and scene geometry are generated locally, without external model or image downloads.
-
-## Testing
-
-Install Playwright's Chromium, then run the suite:
-
-```sh
+```bash
+# Install test browser binaries
 npx playwright install chromium
+
+# Run the test suite
 npm test
 ```
 
-Playwright starts the development server if port 5173 is not already in use. Tests use software WebGL. To use an existing Chrome installation, set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` to its executable path for the test command.
+Test coverage verifies:
+- Furniture drag-and-drop & raycasting accuracy
+- Dimension and finish customization
+- Wall openings and multi-wall snapping
+- Undo / redo history consistency
+- Mobile viewport responsive behaviors
+- Local persistence integrity across reloads
 
-The regression tests cover furniture editing, room finishes, saved designs, mobile layout, catalog drag and drop, room dimensions, clear-room undo, doors, wall openings, appliances, local persistence, and left-wall placement after resizing and reloading.
+---
 
-Generated screenshots, test reports, dependencies, and production output are excluded from Git.
+## 🚀 Deployment
 
-## Deployment
+RoomForge is a 100% static Single-Page Application (SPA). Simply deploy the `dist/` folder to your preferred CDN:
 
-RoomForge is a static single-page application. Run `npm run build` and serve `dist/` from a static host with SPA fallback routing. HTTPS is recommended for production.
+- **Cloudflare Pages:** `wrangler pages deploy dist`
+- **Vercel:** `vercel deploy --prod`
+- **GitHub Pages:** Deploy `dist/` via GitHub Actions workflow
 
-## Current limitations
+---
 
-- The room supports a back wall and a left wall; arbitrary floor plans and multiple rooms are not supported.
-- Furniture placement is not collision-aware, and wall openings can overlap.
-- Furniture models are stylized procedural geometry, not manufacturer-specific assets.
-- Local-only persistence is not a substitute for portable design files or cloud backup.
-- Production builds emit a Vite warning for the large Three.js application chunk. This is a performance warning, not a build failure.
+## 🛠️ Built With
 
-## Contributing
+- **[React 19](https://react.dev/)** — Declarative UI layer
+- **[Three.js](https://threejs.org/)** — WebGL 3D graphics engine
+- **[@react-three/fiber](https://r3f.docs.pmnd.rs/)** — React renderer for Three.js
+- **[@react-three/drei](https://drei.docs.pmnd.rs/)** — R3F helper ecosystem & controls
+- **[Vite 7](https://vite.dev/)** — Next-generation frontend build tooling
+- **[TypeScript](https://www.typescriptlang.org/)** — End-to-end type safety
+- **[Lucide React](https://lucide.dev/)** — Clean, modern iconography
+- **[Playwright](https://playwright.dev/)** — Headless browser testing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, development conventions, and testing expectations.
+---
 
-## Built with
+## 📄 License
 
-[React](https://react.dev/) · [TypeScript](https://www.typescriptlang.org/) · [Vite](https://vite.dev/) · [Three.js](https://threejs.org/) · [React Three Fiber](https://r3f.docs.pmnd.rs/) · [Drei](https://drei.docs.pmnd.rs/) · [Lucide](https://lucide.dev/) · [Playwright](https://playwright.dev/)
-
-## License
-
-[MIT](LICENSE)
+Distributed under the [MIT License](LICENSE). Built by [Risterz](https://github.com/risterz).

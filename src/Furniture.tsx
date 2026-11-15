@@ -166,9 +166,9 @@ function Plant({ item }: { item: FurnitureItem }) {
   }, [item.color, leaves]);
   useEffect(() => () => { geometry.dispose(); texture.dispose(); branches.forEach((branch) => branch.dispose()); }, [geometry, texture, branches]);
   return <group>
-    <mesh position={[0, 0.205, 0]} castShadow><cylinderGeometry args={[0.225, 0.165, 0.41, 48, 0, 1, true]} /><meshStandardMaterial color="#b5aa93" roughness={0.72} side={THREE.DoubleSide} /></mesh>
-    <mesh position={[0, 0.405, 0]} rotation={[Math.PI / 2, 0, 0]}><torusGeometry args={[0.216, 0.012, 0.65, 48]} /><meshStandardMaterial color="#c4b9a2" roughness={0.65} /></mesh>
-    <mesh position={[0, 0.397, 0]} rotation={[Math.PI / 2, 0, 0]}><cylinderGeometry args={[0.204, 0.204, 0.018, 32]} /><meshStandardMaterial color="#514736" roughness={1} /></mesh>
+    <mesh position={[0, 0.205, 0]} castShadow><cylinderGeometry args={[0.225, 0.165, 0.41, 48, 1, true]} /><meshStandardMaterial color="#b5aa93" roughness={0.72} side={THREE.DoubleSide} /></mesh>
+    <mesh position={[0, 0.405, 0]} rotation={[Math.PI / 2, 0, 0]}><torusGeometry args={[0.216, 0.012, 8, 48]} /><meshStandardMaterial color="#c4b9a2" roughness={0.65} /></mesh>
+    <mesh position={[0, 0.397, 0]}><cylinderGeometry args={[0.204, 0.204, 0.018, 32]} /><meshStandardMaterial color="#514736" roughness={1} /></mesh>
     <mesh position={[0, 0.97, 0]} rotation={[0.015, 0, -0.025]} castShadow><cylinderGeometry args={[0.011, 0.027, 1.16, 10]} /><meshStandardMaterial color="#716247" roughness={0.95} /></mesh>
     {branches.map((branch, index) => <mesh key={index} geometry={branch} castShadow><meshStandardMaterial color="#786b4c" roughness={0.95} /></mesh>)}
     <instancedMesh ref={leafMesh} args={[geometry, undefined, leaves.length]} castShadow receiveShadow>
@@ -268,7 +268,7 @@ function Television({ item }: { item: FurnitureItem }) {
     <mesh position={[0, 0.62, -0.04]} castShadow><boxGeometry args={[0.13, 0.3, 0.08]} /><meshStandardMaterial color="#353633" metalness={0.5} /></mesh>
     <mesh position={[0, 0.52, 0]} castShadow><boxGeometry args={[0.62, 0.035, 0.25]} /><meshStandardMaterial color="#3d3e39" metalness={0.45} /></mesh>
     <RoundedBox args={[1.46, 0.84, 0.055]} position={[0, 0.92, 0]} radius={0.025} smoothness={3} castShadow><meshStandardMaterial color="#242724" roughness={0.35} /></RoundedBox>
-    <mesh position={[0, 0.92, 0.031]}><planeGeometry args={[1.405, 0.785, 0]} /><meshStandardMaterial map={texture} emissiveMap={texture} emissive="#ffffff" emissiveIntensity={0.24} roughness={0.3} /></mesh>
+    <mesh position={[0, 0.92, 0.031]}><planeGeometry args={[1.405, 0.785]} /><meshStandardMaterial map={texture} emissiveMap={texture} emissive="#ffffff" emissiveIntensity={0.24} roughness={0.3} /></mesh>
     <mesh position={[0, 0.493, 0.031]}><sphereGeometry args={[0.006, 8, 8]} /><meshBasicMaterial color="#a9c39a" /></mesh>
   </group>;
 }
@@ -290,8 +290,8 @@ function Refrigerator({ item }: { item: FurnitureItem }) {
     <mesh position={[0, 0.265, 0.38]} castShadow><boxGeometry args={[0.77, 0.47, 0.055]} /><meshStandardMaterial color={item.color} metalness={0.45} roughness={0.36} /></mesh>
     <mesh position={[0.26, 1.18, 0.435]} castShadow><boxGeometry args={[0.026, 0.63, 0.04]} /><meshStandardMaterial color="#666b66" metalness={0.75} roughness={0.25} /></mesh>
     <mesh position={[0.26, 0.29, 0.435]} castShadow><boxGeometry args={[0.026, 0.25, 0.04]} /><meshStandardMaterial color="#666b66" metalness={0.75} roughness={0.25} /></mesh>
-    <mesh position={[-0.24, 1.47, 0.414]}><planeGeometry args={[0.15, 0.21, 0]} /><meshStandardMaterial color="#3e4b49" roughness={0.25} /></mesh>
-    <mesh position={[-0.24, 1.49, 0.416]}><planeGeometry args={[0.11, 0.025, 0]} /><meshBasicMaterial color="#8eb4ae" /></mesh>
+    <mesh position={[-0.24, 1.47, 0.414]}><planeGeometry args={[0.15, 0.21]} /><meshStandardMaterial color="#3e4b49" roughness={0.25} /></mesh>
+    <mesh position={[-0.24, 1.49, 0.416]}><planeGeometry args={[0.11, 0.025]} /><meshBasicMaterial color="#8eb4ae" /></mesh>
     {[-0.26, 0.26].map((x) => <mesh key={x} position={[x, 0.025, 0.22]}><cylinderGeometry args={[0.035, 0.035, 0.05, 12]} /><meshStandardMaterial color="#41443e" /></mesh>)}
   </group>;
 }
