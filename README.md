@@ -10,11 +10,18 @@
 </p>
 
 <p align="center">
+  <a href="https://roomforge-3d.pages.dev" target="_blank">
+    <img src="https://img.shields.io/badge/🌐_Live_Demo-roomforge--3d.pages.dev-0051C3?style=for-the-badge&logo=cloudflare&logoColor=F38020" alt="Live Demo" />
+  </a>
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/React-19.2-61DAFB?logo=react&logoColor=black&style=flat-square" alt="React 19" />
   <img src="https://img.shields.io/badge/Three.js-r180-black?logo=three.js&logoColor=white&style=flat-square" alt="Three.js" />
   <img src="https://img.shields.io/badge/R3F-v9-black?logo=three.js&logoColor=white&style=flat-square" alt="React Three Fiber" />
   <img src="https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white&style=flat-square" alt="TypeScript" />
   <img src="https://img.shields.io/badge/Vite-7.2-646CFF?logo=vite&logoColor=white&style=flat-square" alt="Vite" />
+  <img src="https://img.shields.io/badge/Cloudflare_Pages-Deployed-F38020?logo=cloudflarepages&logoColor=white&style=flat-square" alt="Cloudflare Pages" />
   <img src="https://img.shields.io/badge/License-MIT-green.svg?style=flat-square" alt="License MIT" />
 </p>
 
@@ -132,8 +139,12 @@ Test coverage verifies:
 
 ## 🚀 Deployment
 
-RoomForge is a 100% static Single-Page Application (SPA). Simply deploy the `dist/` folder to your preferred CDN:
+The production application is continuously deployed to Cloudflare Pages directly from the `index` branch:
 
+- 🌐 **Live Website:** [roomforge-3d.pages.dev](https://roomforge-3d.pages.dev)
+- 🔄 **Continuous Deployment:** Every push to GitHub automatically triggers a build and deploy.
+
+To deploy manually to other static hosts:
 - **Cloudflare Pages:** `wrangler pages deploy dist`
 - **Vercel:** `vercel deploy --prod`
 - **GitHub Pages:** Deploy `dist/` via GitHub Actions workflow
