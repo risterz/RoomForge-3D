@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# Production output
+dist/
+
+# Local screenshots
+screenshot.png
+
+# Browser test output
+artifacts/
+test-results/
+playwright-report/
+blob-report/
+
+# TypeScript build state
+*.tsbuildinfo
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
