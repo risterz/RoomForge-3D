@@ -12,8 +12,8 @@ function createFloorTexture(color: string) {
   canvas.width = 1024; canvas.height = 1024;
   const context = canvas.getContext('2d')!;
   context.fillStyle = color; context.fillRect(0, 0, 1024, 1024);
-  let sha = 73;
-  const random = () => { sha = sha * 16807 % 2147483647; return sha / 2147483647; };
+  let seed = 73;
+  const random = () => { seed = seed * 16807 % 2147483647; return seed / 2147483647; };
   for (let row = 0; row < 16; row++) {
     const y = row * 64;
     context.fillStyle = row % 2 ? '#ffffff08' : '#57442a07';
@@ -90,7 +90,8 @@ function RoomShell({ width, depth, wallColor, floorColor, items, onDeselect }: {
   const openings = items.filter((entry) => entry.kind === 'door' || entry.kind === 'window').map((entry) => ({ ...entry, ...getWallPlacement(entry, width, depth) }));
   return <group>
     <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow onPointerDown={(event) => { if (event.button === 0) onDeselect(); }}>
-      <planeGeometry args={[width, depth]} /><meshStandardMaterial map={floorTexture} roughness={0.3} /></mesh>
+      <planeGeometry args={[width, depth]} /><meshStandardMaterial map={floorTexture} roughness={0.73} />
+    </mesh>
     <mesh position={[0, -0.08, 0]} receiveShadow><boxGeometry args={[width + 0.12, 0.16, depth + 0.12]} /><meshStandardMaterial color="#a68b6b" /></mesh>
     <group position={[0, 0, -depth / 2]}><Wall width={width + 0.16} color={wallColor} openings={openings.filter((entry) => Math.abs(entry.rotation) < 0.1)} /></group>
     <group position={[-width / 2, 0, 0]} rotation={[0, Math.PI / 2, 0]}><Wall width={depth} color={wallColor} openings={openings.filter((entry) => Math.abs(entry.rotation) > 0.1).map((entry) => ({ ...entry, position: [-entry.position[2], 0, 0], rotation: 0 }))} /></group>
